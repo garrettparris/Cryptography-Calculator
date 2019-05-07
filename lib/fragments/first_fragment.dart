@@ -1,33 +1,53 @@
 import 'package:flutter/material.dart';
 import 'dart:core';
+import 'modulo_pages/regular_modulo.dart';
+import 'modulo_pages/inverse_modulo.dart';
+import 'modulo_pages/exponent_modulo.dart';
 
 class FirstFragment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      body: new Container(
-          padding: const EdgeInsets.all(40.0),
-          child: new Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              new TextField(
-                decoration: new InputDecoration(labelText: "Enter your number"),
-                keyboardType: TextInputType.number,
-              ),
-            ],
-          )),
+    return Scaffold(
+      body: Center(
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            RaisedButton(
+              child: Text('Modulo'),
+              onPressed: () {
+                // Navigate to the second screen using a named route
+
+                Navigator.of(context).push(new MaterialPageRoute(builder:
+                    (BuildContext context) => new RegularModulo()));
+              },
+            ),
+            RaisedButton(
+              child: Text('Inverse Modulo'),
+              onPressed: () {
+                // Navigate to the second screen using a named route
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => new InverseModulo()),
+                );
+              },
+            ),
+            RaisedButton(
+              child: Text('Exponent modulo'),
+              onPressed: () {
+                // Navigate to the second screen using a named route
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => new ExponentModulo()),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
-
-  modulo(int exponent, int dividend, int divisor) {
-    if (exponent == 1) {
-      return dividend % divisor;
-    } else if (exponent == -1) {
-      return dividend.modInverse(divisor);
-    } else if (!exponent.isNegative && exponent != 1) {
-      return dividend.modPow(exponent, divisor);
-    } else {
-      //broke
-    }
-  }
 }
+

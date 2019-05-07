@@ -1,67 +1,42 @@
 import 'package:flutter/material.dart';
 import 'dart:core';
+import 'gcdPages/euclidean.dart';
+import 'gcdPages/extendedEuclidean.dart';
+
 
 class SecondFragment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      body: new Container(
+    return Scaffold(
+      body: Center(
         child: new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            new Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                new Container(
-                  width:50,
-                  child: new TextField(
-                    textAlign: TextAlign.center,
-                    decoration: new InputDecoration(
-                        hintText: "y", contentPadding: new EdgeInsets.all(0.0)),
-                  ),
-                ),
-                new Container(
-                  width: 50,
-                  child: new TextField(
-                    textAlign: TextAlign.center,
-                    decoration: new InputDecoration(
-                        hintText: "y", contentPadding: new EdgeInsets.all(0.0)),
-                  ),
-                ),
-                new Container(
-                  width: 50,
-                  child: new TextField(
-                    textAlign: TextAlign.center,
-                    decoration: new InputDecoration(
-                        hintText: "y", contentPadding: new EdgeInsets.all(0.0)),
-                  ),
-                ),
-              ],
+            RaisedButton(
+              child: Text('Euclidean Algorithm'),
+              onPressed: () {
+                // Navigate to the second screen using a named route
+
+                Navigator.of(context).push(new MaterialPageRoute(builder:
+                    (BuildContext context) => new Euclidean()));
+              },
             ),
-            new Row(
-              children: <Widget>[
-                new Container(),
-              ],
-            ),
-            new Row(
-              children: <Widget>[
-                new Container(),
-              ],
+            RaisedButton(
+              child: Text('Extended Euclidean Algorithm'),
+              onPressed: () {
+                // Navigate to the second screen using a named route
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => new extendedEuclidean()),
+                );
+              },
             ),
           ],
         ),
       ),
     );
   }
-
-  modulo(int exponent, int dividend, int divisor) {
-    if (exponent == 1) {
-      return dividend % divisor;
-    } else if (exponent == -1) {
-      return dividend.modInverse(divisor);
-    } else if (!exponent.isNegative && exponent != 1) {
-      return dividend.modPow(exponent, divisor);
-    } else {
-      //broke
-    }
-  }
 }
+

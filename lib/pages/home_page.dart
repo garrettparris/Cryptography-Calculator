@@ -13,8 +13,8 @@ class DrawerItem {
 
 class HomePage extends StatefulWidget {
   final drawerItems = [
-    new DrawerItem("Cryptography Calculator", "Home"),
     new DrawerItem("Modulo Calculator", "Modulo Calculator"),
+    new DrawerItem("Greatest Common Denominator", "Greatest Common Denominator"),
     new DrawerItem("Greatest Common Denominator","Greatest Common Denominator"),
     new DrawerItem("SHA-3","SHA-3"),
   ];
