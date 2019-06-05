@@ -10,6 +10,7 @@ class _Euclidean extends State<Euclidean> {
   TextEditingController aValue = new TextEditingController();
   TextEditingController nValue = new TextEditingController();
   BigInt result;
+  bool visibilityTag = false;
 
   @override
   Widget build(BuildContext context) {
@@ -20,57 +21,61 @@ class _Euclidean extends State<Euclidean> {
       width: 100.00,
     );
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Euclidean Algorithm"),
-      ),
       body: Center(
         child: new Column(
           children: <Widget>[
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                new Flexible(
-                  child: image,
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                new Text("a: "),
-                new Flexible(
-                  child: new TextField(
-                    controller: aValue,
-                    keyboardType: TextInputType.number,
-                    textAlign: TextAlign.center,
-                    decoration: new InputDecoration(
-                      hintText: "a", contentPadding: new EdgeInsets.all(0.0),
+                Padding(
 
-
-                    ),
+                  child: new Container(
+                    child: new Text('gcd(a,b)', style: TextStyle(
+        fontStyle: FontStyle.italic, fontSize: 20.00),),
                   ),
                 ),
               ],
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    new Text("b: "),
-                    new Flexible(
-                      child: new TextField(
-                        controller: nValue,
-                        keyboardType: TextInputType.number,
-                        textAlign: TextAlign.center,
-                        decoration: new InputDecoration(
-                            hintText: "b", contentPadding: new EdgeInsets.all(0.0)),
+              padding: const EdgeInsets.fromLTRB(40.00, 10.0, 40.00, 0.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Text("a: "),
+                  new Flexible(
+                    child: new TextField(
+                      controller: aValue,
+                      keyboardType: TextInputType.number,
+                      textAlign: TextAlign.center,
+                      decoration: new InputDecoration(
+                        contentPadding: new EdgeInsets.all(0.0),
+
+
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(40.00, 10.0, 40.00, 0.0),
+              child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      new Text("b: "),
+                      new Flexible(
+                        child: new TextField(
+                          controller: nValue,
+                          keyboardType: TextInputType.number,
+                          textAlign: TextAlign.center,
+                          decoration: new InputDecoration(
+                              contentPadding: new EdgeInsets.all(0.0)),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -82,6 +87,7 @@ class _Euclidean extends State<Euclidean> {
                   onPressed: (){
                     setState(() {
                       this.result= (BigInt.parse(aValue.text.toString()).gcd(BigInt.parse(nValue.text.toString())));
+                      visibilityTag = true;
                     });
 
                   },
@@ -94,7 +100,7 @@ class _Euclidean extends State<Euclidean> {
                 new Text("Result: "),
               ],
             ),
-            Row(
+            visibilityTag ? Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 new Flexible(
@@ -103,7 +109,7 @@ class _Euclidean extends State<Euclidean> {
                 ),
               ],
 
-            ),
+            ) : new Container(),
           ],
         ),
       ),

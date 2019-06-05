@@ -1,8 +1,8 @@
-import 'package:cryptography_calculator/fragments/first_fragment.dart';
-import 'package:cryptography_calculator/fragments/second_fragment.dart';
-import 'package:cryptography_calculator/fragments/third_fragment.dart';
-import 'package:cryptography_calculator/fragments/fourth_fragment.dart';
-
+import 'package:cryptography_calculator/fragments/modulo_pages/regular_modulo.dart';
+import 'package:cryptography_calculator/fragments/modulo_pages/inverse_modulo.dart';
+import 'package:cryptography_calculator/fragments/modulo_pages/exponent_modulo.dart';
+import 'package:cryptography_calculator/fragments/gcdPages/euclidean.dart';
+import 'package:cryptography_calculator/fragments/gcdPages/extendedEuclidean.dart';
 import 'package:flutter/material.dart';
 
 class DrawerItem {
@@ -14,9 +14,10 @@ class DrawerItem {
 class HomePage extends StatefulWidget {
   final drawerItems = [
     new DrawerItem("Modulo Calculator", "Modulo Calculator"),
+    new DrawerItem("Inverse Modulo Calculator", "Inverse Modulo Calculator"),
+    new DrawerItem("Exponential Modulo Calculator", "Exponential Modulo Calculator"),
     new DrawerItem("Greatest Common Denominator", "Greatest Common Denominator"),
-    new DrawerItem("Greatest Common Denominator","Greatest Common Denominator"),
-    new DrawerItem("SHA-3","SHA-3"),
+    new DrawerItem("Bézout's identity","Bézout's identity"),
   ];
 
   @override
@@ -31,13 +32,15 @@ class HomePageState extends State<HomePage> {
   _getDrawerItemWidget(int pos) {
     switch (pos) {
       case 0:
-        return new FirstFragment();
+        return new RegularModulo();
       case 1:
-        return new SecondFragment();
+        return new InverseModulo();
       case 2:
-        return new ThirdFragment();
+        return new ExponentModulo();
       case 3:
-        return new FourthFragment();
+        return new Euclidean();
+      case 4:
+        return new extendedEuclidean();
 
       default:
         return new Text("Error");
