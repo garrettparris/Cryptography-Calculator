@@ -14,12 +14,7 @@ class _Euclidean extends State<Euclidean> {
 
   @override
   Widget build(BuildContext context) {
-    var assetimg = new AssetImage("assets/modulo.png");
-    var image = new Image(
-      image: assetimg,
-      height: 100.00,
-      width: 100.00,
-    );
+
     return Scaffold(
       body: Center(
         child: new Column(
@@ -28,6 +23,7 @@ class _Euclidean extends State<Euclidean> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Padding(
+                  padding: const EdgeInsets.fromLTRB(0.00, 30.0, 0.00, 0.0),
 
                   child: new Container(
                     child: new Text('gcd(a,b)', style: TextStyle(

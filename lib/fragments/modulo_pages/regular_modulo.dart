@@ -12,12 +12,7 @@ class _RegularModulo extends State<RegularModulo> {
   bool visibilityTag = false;
   @override
   Widget build(BuildContext context) {
-    var assetimg = new AssetImage("assets/modulo.png");
-    var image = new Image(
-      image: assetimg,
-      height: 100.00,
-      width: 100.00,
-    );
+
     return Scaffold(
       body: Center(
         child: new Column(

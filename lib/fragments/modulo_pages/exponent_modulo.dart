@@ -10,17 +10,11 @@ class _ExponentModulo extends State<ExponentModulo> {
   TextEditingController nValue = new TextEditingController();
   TextEditingController xValue = new TextEditingController();
 
-  int result;
+  BigInt result;
 
   bool visibilityTag = false;
   @override
   Widget build(BuildContext context) {
-    var assetimg = new AssetImage("assets/Exponentmod.png");
-    var image = new Image(
-      image: assetimg,
-      height: 100.00,
-      width: 100.00,
-    );
     return Scaffold(
       body: Center(
         child: new Column(
@@ -110,6 +104,7 @@ class _ExponentModulo extends State<ExponentModulo> {
                           BigInt.parse(xValue.text.toString()),
                           BigInt.parse(nValue.text.toString()));
                       visibilityTag = true;
+                      print(this.result);
                     });
                   },
                 ),
@@ -126,7 +121,7 @@ class _ExponentModulo extends State<ExponentModulo> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       new Flexible(
-                        child: new Text('${this.result}'),
+                        child: new Text('${this.result.toString()}'),
                       ),
                     ],
                   )
@@ -139,7 +134,7 @@ class _ExponentModulo extends State<ExponentModulo> {
 }
 
 modPow(BigInt b, BigInt e, BigInt m) {
-  if (e < BigInt.one) {
+  if (e < BigInt.one)  {
     return BigInt.one;
   }
   if (b < BigInt.zero || b > m) {

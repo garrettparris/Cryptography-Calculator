@@ -13,12 +13,6 @@ class _InverseModulo extends State<InverseModulo> {
 
   @override
   Widget build(BuildContext context) {
-    var assetimg = new AssetImage("assets/Inversemod.png");
-    var image = new Image(
-      image: assetimg,
-      height: 100.00,
-      width: 100.00,
-    );
     return Scaffold(
       body: Center(
         child: new Column(
